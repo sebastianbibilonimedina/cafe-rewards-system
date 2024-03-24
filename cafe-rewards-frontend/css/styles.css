@@ -14,7 +14,7 @@ body, html {
 }
 
 .card-header {
-    background: linear-gradient(to right, #007bff, #4fc3f7);
+    background: linear-gradient(to right, #355E3B, #90EE90);
     padding: 10px;
     color: white;
     position: relative;
@@ -72,7 +72,7 @@ body, html {
 }
 
 .learn-more {
-    background: #007bff;
+    background: #90EE90;
     color: white;
     border: none;
     padding: 10px 20px;

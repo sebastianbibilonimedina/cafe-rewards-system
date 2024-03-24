@@ -1,59 +1,84 @@
-body, html {
+body {
+    font-family: 'Assistant', sans-serif;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
+    background: #fff;
+    color: #333;
 }
 
-.app-header, .app-footer {
+.main-header {
     text-align: center;
-    padding: 1em;
-    background-color: #FFFFFF;
-    color: #000000;
+    padding: 20px;
 }
 
-.main-nav {
+.main-nav .nav-list {
+    list-style-type: none;
+    padding: 0;
     display: flex;
-    justify-content: space-around;
-    padding: 1em;
-    background: linear-gradient(to right, #355E3B, #90EE90);
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
-.nav-item {
+.main-nav .nav-list li {
+    margin: 0 15px;
+    font-weight: 600;
+}
+
+.main-nav .nav-list li.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.main-nav .nav-list a {
     text-decoration: none;
-    color: white;
-    padding: 0.5em 1em;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    color: #333;
+    padding-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
 }
 
-.nav-item:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+.main-nav .nav-list a.active {
+    border-bottom: 2px solid #333;
 }
 
-.featured {
-    text-align: center;
-    padding: 2em;
-    margin: 2em;
-    border-radius: 8px;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.top-line, .section-line, .bottom-line {
+    border: none;
+    height: 2px;
+    background-color: #333;
+    margin: 20px 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .main-nav {
-        flex-direction: column;
-    }
-
-    .nav-item {
-        margin: 5px 0;
-    }
+.hero-section h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 60px;
+    margin: 40px 0;
 }
 
-/* Footer styles */
-.app-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.sign-up-btn {
+    background: transparent;
+    border: 2px solid #333;
+    padding: 10px 50px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease, color 0.3s ease;
 }
+
+.sign-up-btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;

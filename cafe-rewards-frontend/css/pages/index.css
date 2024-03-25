@@ -24,7 +24,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: #ffffff;
+    color: #000000;
+    background: url('/cafe-rewards-frontend/assets/images/happybones7.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     width: 100vw;
     height: 100vh;
 }

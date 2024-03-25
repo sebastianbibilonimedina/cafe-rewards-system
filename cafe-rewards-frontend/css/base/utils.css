@@ -1,0 +1,60 @@
+/* Utils.css: Common Utility Styles */
+
+/* Variable Declarations */
+:root {
+    --text-align-center: center;
+    --standard-padding: 10px;
+}
+
+/* Flex Styles */
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Text Styles */
+.center-text {
+    text-align: var(--text-align-center);
+}
+
+/* Margin and Padding Styles */
+.margin-auto {
+    margin: auto;
+}
+
+.padding-10 {
+    padding: var(--standard-padding);
+}
+
+.padding-20 {
+    padding: 20px;
+}
+
+/* Font Styles */
+.font-assistant {
+    font-family: 'Assistant', sans-serif;
+}
+
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Box Styles */
+.rounded-corner-8 {
+    border-radius: 8px;
+}
+
+.shadow {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+.main-header {
+    text-align: var(--text-align-center);
+    padding: var(--standard-padding);
+}

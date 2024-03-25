@@ -1,0 +1,17 @@
+:root {
+    --background-color: #fff;
+    --text-color: #333;
+    --text-align-center: center;
+    --standard-padding: 1em;
+    --list-margin: 0 15px;
+    --standard-font-weight: 600;
+    --logo-font-weight: 700;
+    --logo-font-size: 20px;
+    --standard-font-size: 14px;
+    --link-padding-bottom: 5px;
+    --transition-all: all 0.3s ease-in-out;
+    --border-bottom: 2px solid var(--text-color);
+    --line-height: 2px;
+    --standard-margin: 20px;
+    --border-bottom-height: 20px;
+}

@@ -69,8 +69,8 @@ body {
 .main-nav .nav-list li a.active::after {
     content: '';
     position: absolute;
-    left: 50%;
-    bottom: 2px; /* Adjust this value to move the line closer or further away */
+    left: 48%;
+    bottom: 6px; /* Adjust this value to move the line closer or further away */
     transform: translateX(-50%);
     width: 100%;
     height: 2px; /* Thickness of the underline */

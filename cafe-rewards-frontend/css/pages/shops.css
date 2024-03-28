@@ -1,0 +1,36 @@
+.shops-page {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+}
+
+.shop-list {
+    width: 350px; /* Fixed width for the shop list */
+    overflow-y: auto; /* Scroll for overflowing content */
+    padding: 1rem;
+    border-right: 1px solid #ccc; /* Separator between list and map */
+}
+
+.shop-list h2,
+.shop-list input,
+.shop-list button {
+    margin-bottom: 1rem; /* Spacing */
+}
+
+.shop-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee; /* Separator between shop items */
+}
+
+.order-button {
+    background-color: #000000; /* Cafe Rewards Brand Color */
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    /* Additional button styling */
+}
+
+.map-container {
+    flex-grow: 1; /* Take remaining space */
+    /* Map will fill this container */
+}

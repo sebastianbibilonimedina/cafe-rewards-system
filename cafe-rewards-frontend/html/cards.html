@@ -3,22 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Shop Cards</title>
+    <title>Cafe Rewards - Start Earning Points</title>
+    <link rel="stylesheet" href="../css/base/variables.css">
+    <link rel="stylesheet" href="../css/base/fonts.css">
+    <link rel="stylesheet" href="../css/base/global.css">
+    <link rel="stylesheet" href="../css/base/utils.css">
     <link rel="stylesheet" href="../css/pages/cards.css">
 </head>
 <body>
 
-<div class="cards-container">
-    <!-- Add your coffee shop cards here -->
-    <div class="card">
-        <div class="card-content">
-            <h2>Café Latte</h2>
-            <p>Get your morning started with a creamy latte.</p>
-        </div>
-    </div>
-    <!-- Repeat for each coffee shop card -->
-</div>
+<header class="main-header">
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li><a href="index.html" >HOME</a></li>
+            <li><a href="global.html">GLOBAL</a></li>
+            <li><a href="cards.html" class="active">CARDS</a></li>
+            <li class="logo">CAFÉ REWARDS</li>
+            <li><a href="order.html">ORDER</a></li>
+            <li><a href="shops.html">SHOPS</a></li>
+            <li><a href="account.html">ACCOUNT</a></li>
+        </ul>
+    </nav>
+</header>
 
-<script src="script.js"></script>
+<main class="card-detail-container">
+    <section class="card-balance-section">
+        <h2 class="card-balance">$13.38</h2>
+        <div class="card-image-container">
+            <img src="../assets/images/card.png" alt="Cafe Rewards Card" class="card-image">
+            <div class="card-info">
+                <label for="cardNickname">Card nickname</label>
+                <input type="text" id="cardNickname" name="cardNickname" placeholder="My Card (8374)">
+                <div class="card-options">
+                    <div class="auto-reload">
+                        <p>Auto reload</p>
+                        <p>When balance is at or below $10.00, Auto reload $10.00</p>
+                        <button class="edit-auto-reload">Edit Auto reload</button>
+                    </div>
+                    <div class="set-default">
+                        <input type="checkbox" id="defaultCard" name="defaultCard" checked>
+                        <label for="defaultCard">This is your default card</label>
+                    </div>
+                    <button class="remove-card">Remove</button>
+                    <button class="report-lost-stolen">Report lost or stolen</button>
+                </div>
+            </div>
+        </div>
+        <button class="add-money-btn">Add money</button>
+    </section>
+</main>
+
+<!-- Additional content here -->
+
 </body>
 </html>

@@ -1,27 +1,31 @@
+// Top of your .js file
+window.initMap = initMap;
+
+const DEFAULT_MAP_CENTER = {lat: 18.2208, lng: -66.5901};
+const mapOptions = {
+    zoom: 8,
+    center: DEFAULT_MAP_CENTER
+};
+
 function initMap() {
-    // Map options
-    var options = {
-        zoom: 8,
-        center: { lat: 18.2208, lng: -66.5901 } // Coordinates for Puerto Rico
-    };
-
-    // New map
-    var map = new google.maps.Map(document.getElementById('map'), options);
-
-    // Add marker function
-    function addMarker(coords) {
-        var marker = new google.maps.Marker({
-            position: coords,
-            map: map,
-            //icon: 'path_to_custom_icon' // Optional: if you have a custom icon
-        });
-    }
-
-    // Add markers for each location
-    // These could be dynamic based on data from the backend
-    addMarker({ lat: 18.2013, lng: -67.1397 }); // Example: Mayaguez
-    // Repeat for other locations
+    const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    createMarker(map, {lat: 18.2013, lng: -67.1397});
+    // Repeat for other locations if necessary
 }
 
-// Make sure to attach initMap to the window object if it's not in global scope
+function createMarker(map, coords) {
+    return new google.maps.Marker({
+        position: coords,
+        map: map,
+        //icon: 'path_to_custom_icon' // Optional: if you have a custom icon
+    });
+}
+
+function reinitializeMap() {
+    if (!document.hidden) {
+        initMap();
+    }
+}
+
+document.addEventListener('visibilitychange', reinitializeMap);
 window.initMap = initMap;

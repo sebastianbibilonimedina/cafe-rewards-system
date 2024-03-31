@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../path/to/database/connection'); // require your database connection file
+const { sequelize } = global;
 const bcrypt = require('bcryptjs');
 
 class Owner extends Model {}

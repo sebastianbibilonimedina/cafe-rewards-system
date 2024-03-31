@@ -1,7 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../path/to/database/connection'); // require your database connection file
-const Menu = require('./Menu');
-const Customer = require('./Customer');
+const { sequelize } = global;
 
 class Order extends Model {}
 
@@ -14,18 +12,10 @@ Order.init({
     menuId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: Menu,
-            key: 'menuId'
-        }
     },
     customerId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: Customer,
-            key: 'customerId'
-        }
     },
     quantity: {
         type: DataTypes.INTEGER,
@@ -40,10 +30,17 @@ Order.init({
     sequelize,
     modelName: 'Order',
     tableName: 'orders',
-    timestamps: false,
+    timestamps: false, // set this to true if you have createdAt and updatedAt fields
 });
 
-Order.belongsTo(Menu, { foreignKey: 'menuId' });
-Order.belongsTo(Customer, { foreignKey: 'customerId' });
+Order.associate = function(models) {
+    this.belongsTo(models.Menus, {
+        foreignKey: 'menuId',
+    });
+
+    this.belongsTo(models.Users, {
+        foreignKey: 'customerId',
+    });
+};
 
 module.exports = Order;

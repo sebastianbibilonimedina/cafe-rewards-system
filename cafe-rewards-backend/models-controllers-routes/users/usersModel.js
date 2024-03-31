@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../path/to/database/connection'); // replace with your db connection file
+const { sequelize } = global;
 
 class User extends Model {}
 
@@ -32,4 +32,15 @@ User.init({
     timestamps: false, // set this to true if you have createdAt and updatedAt fields
 });
 
+User.associate = function(models) {
+    this.hasOne(models.DigitalWallets, {
+        foreignKey: 'userid',
+    });
+    this.hasMany(models.Orders, {
+        foreignKey: 'userid',
+    });
+    this.hasMany(models.Transactions, {
+        foreignKey: 'userid',
+    });
+}
 module.exports = User;

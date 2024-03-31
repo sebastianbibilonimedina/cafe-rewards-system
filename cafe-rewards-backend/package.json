@@ -18,8 +18,5 @@
   },
   "scripts": {
     "start": "node app.js"
-  },
-  "scripts": {
-    "start": "dotenv -e .env node cafe-rewards-backend/app.js"
   }
 }

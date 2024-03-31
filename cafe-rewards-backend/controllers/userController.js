@@ -1,5 +1,4 @@
-// Example userController.js
-
+const User = require('../models/user.js');
 // Dummy users array for demonstration
 const users = [{ id: 1, name: "John Doe", email: "john@example.com" }];
 
@@ -16,22 +15,51 @@ exports.getUser = (req, res) => {
 };
 
 // Create a new user
-exports.createUser = (req, res) => {
-    // Implement user creation logic here
-    // For demonstration, returning a simple message
-    res.send("User created successfully.");
+exports.createUser = async (req, res) => {
+    try {
+        const user = await User.create(req.body);
+        res.status(201).json(user);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+//Get all users
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.findAll();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
 // Update a user
-exports.updateUser = (req, res) => {
-    // Implement user update logic here
-    // For demonstration, returning a simple message
-    res.send("User updated successfully.");
+exports.updateUser = async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.id);
+        if (user) {
+            await user.update(req.body);
+            res.status(200).json(user);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
 // Delete a user
-exports.deleteUser = (req, res) => {
-    // Implement user deletion logic here
-    // For demonstration, returning a simple message
-    res.send("User deleted successfully.");
+exports.deleteUser = async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.id);
+        if (user) {
+            await user.destroy();
+            res.status(204).send();
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };

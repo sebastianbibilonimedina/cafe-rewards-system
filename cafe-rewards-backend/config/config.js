@@ -1,4 +1,6 @@
 require('dotenv').config();
+console.log('DB_DIALECT in test file: ', process.env.DB_DIALECT);
+
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize(

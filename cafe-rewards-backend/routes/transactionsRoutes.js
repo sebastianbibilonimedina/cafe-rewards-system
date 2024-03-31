@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const transactionController = require('../controllers/transactionController');
+const transactionController = require('../controllers/transactionsController'); // Added 's' to 'transactions'
 
-// Ruta para crear una nueva transacción
+// Route to create a new transaction
 router.post('/', transactionController.createTransaction);
 
-// Ruta para obtener todas las transacciones
+// Route to get all transactions
 router.get('/', transactionController.getAllTransactions);
 
 module.exports = router;

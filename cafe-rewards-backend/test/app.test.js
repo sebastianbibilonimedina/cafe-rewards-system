@@ -1,27 +1,39 @@
-const sequelize = require('../config/config'); // Replace with actual path
-const { User } = require('../models'); // Import the user model
-require('dotenv').config({ path: '.env' });
+const expect = require('chai').expect;
+const request = require('supertest');
+const app = require('../app'); // make sure to point to your app file.
 
-describe('User model', () => {
-    /* Before any tests run, clear the database and reseed it. */
-    beforeAll(async () => {
-        await sequelize.sync({ force: true });   // This will erase the whole database. Be sure to use a different database for tests.
+describe('Transactions API tests', () => {
+
+    // Test Case for Creating Transaction
+    it('should create a new transaction', (done) => {
+        request(app)
+            .post('/transactions')
+            .send({/* sample data for transaction */})
+            .end((err, res) => {
+                if (err) return done(err);
+
+                expect(res.statusCode).to.equal(201);
+                expect(res.body).to.be.an('object');
+
+                // more assertions based on the response
+
+                done();
+            });
     });
 
-    test('create user', async () => {
-        const user = await User.create({
-            username: 'testUser',
-            email: 'testuser@example.com',
-            password: 'strongpassword123'
-        });
+    // Test Case for Getting All Transactions
+    it('should get all transactions', (done) => {
+        request(app)
+            .get('/transactions')
+            .end((err, res) => {
+                if (err) return done(err);
 
-        /* Basic tests for User creation. */
-        expect(user.username).toBe('testUser');
-        expect(user.email).toBe('testuser@example.com');
-    });
+                expect(res.statusCode).to.equal(200);
+                expect(res.body).to.be.an('array');
 
-    /* After all tests have completed, close the database connection. */
-    afterAll(async () => {
-        await sequelize.close();
+                // more assertions based on the response
+
+                done();
+            });
     });
 });

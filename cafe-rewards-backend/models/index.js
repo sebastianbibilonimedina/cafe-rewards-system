@@ -4,16 +4,16 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-    sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-    sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// Setup a Sequelize instance using environment variables
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: 'postgres',    // This is one of the MySQL, MariaDB, SQLite, PostgreSQL and MSSQL.
+    logging: false           // Disable SQL logging
+});
+
+let db = {};
 
 fs
     .readdirSync(__dirname)
@@ -26,7 +26,6 @@ fs
         );
     })
     .forEach(file => {
-        // Changed this part
         const modelFactory = require(path.join(__dirname, file));
         const model = modelFactory(sequelize, Sequelize.DataTypes);
         db[model.name] = model;

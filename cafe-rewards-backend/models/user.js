@@ -1,9 +1,9 @@
-const { Model } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class User extends Model {
         static associate(models) {
-            // define association here
+            // associations can be defined here
             User.hasMany(models.Order, {
                 foreignKey: 'userId',
             });
@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     User.init({
         email: DataTypes.STRING,
         password: DataTypes.STRING,
-        role: DataTypes.STRING // Ejemplo: 'customer', 'admin'
+        name: DataTypes.STRING, // Added based on your schema
+        pointBalance: DataTypes.INTEGER, // Added based on your schema; ensure camelCase here matches your DB columns if using Sequelize
+        role: DataTypes.STRING // Example roles: 'customer', 'admin'
     }, {
         sequelize,
         modelName: 'User',

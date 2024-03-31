@@ -1,36 +1,20 @@
 const express = require('express');
 const router = express.Router();
-// Placeholder for your user controller
-// const userController = require('../controllers/userController');
+const userController = require('../controllers/userController'); // Adjust the path as necessary
 
 // Register a new user
-router.post('/', (req, res) => {
-    // userController.createUser
-    res.send('Register a new user');
-});
+router.post('/', userController.createUser);
 
 // Retrieve a list of users
-router.get('/', (req, res) => {
-    // userController.listUsers
-    res.send('Retrieve a list of users');
-});
+router.get('/', userController.getAllUsers);
 
 // Get a specific user's details
-router.get('/:id', (req, res) => {
-    // userController.getUser
-    res.send('Get a specific user\'s details');
-});
+router.get('/:id', userController.getUser);
 
 // Update a user's details
-router.put('/:id', (req, res) => {
-    // userController.updateUser
-    res.send('Update a user\'s details');
-});
+router.put('/:id', userController.updateUser);
 
 // Remove a user from the system
-router.delete('/:id', (req, res) => {
-    // userController.deleteUser
-    res.send('Remove a user from the system');
-});
+router.delete('/:id', userController.deleteUser);
 
 module.exports = router;

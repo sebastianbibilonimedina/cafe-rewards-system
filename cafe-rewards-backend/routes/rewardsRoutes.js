@@ -6,10 +6,10 @@ const rewardsController = require('../controllers/rewardsController');
 router.post('/', rewardsController.createReward);
 
 // Retrieve a list of rewards
-router.get('/', rewardsController.listRewards);
+router.get('/', rewardsController.getAllRewards); // Changed this
 
 // Get details of a specific reward
-router.get('/:id', rewardsController.getReward);
+router.get('/:id', rewardsController.getRewardById); // Changed this
 
 // Update reward details
 router.put('/:id', rewardsController.updateReward);

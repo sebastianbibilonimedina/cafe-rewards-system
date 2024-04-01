@@ -7,6 +7,7 @@ DigitalWallets.init({
     walletid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
     },
     userid: {
         type: DataTypes.INTEGER,

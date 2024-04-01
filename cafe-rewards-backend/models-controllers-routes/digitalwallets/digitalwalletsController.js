@@ -36,18 +36,27 @@ class DigitalWalletsController {
     // update a digital wallet
     async update(req, res) {
         try {
-            await DigitalWallets.update(req.body, { where: { walletid: req.params.id } });
-            res.send('Digital wallet updated');
+            const [updated] = await DigitalWallets.update(req.body, { where: { walletid: req.params.id } });
+            if (updated) {
+                const updatedWallet = await DigitalWallets.findByPk(req.params.id);
+                res.json(updatedWallet);
+            } else {
+                res.status(404).send('Digital wallet not found');
+            }
         } catch (err) {
             res.status(500).send(err.message);
         }
     }
 
-    // delete a digital wallet
+// delete a digital wallet
     async delete(req, res) {
         try {
-            await DigitalWallets.destroy({ where: { walletid: req.params.id } });
-            res.send('Digital wallet deleted');
+            const deleted = await DigitalWallets.destroy({where: {walletid: req.params.id}});
+            if (deleted) {
+                res.send('Digital wallet deleted');
+            } else {
+                res.status(404).send('Digital wallet not found');
+            }
         } catch (err) {
             res.status(500).send(err.message);
         }

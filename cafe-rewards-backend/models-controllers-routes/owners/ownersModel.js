@@ -5,37 +5,32 @@ const bcrypt = require('bcryptjs');
 class Owner extends Model {}
 
 Owner.init({
-    ownerId: {
+    // The field is `ownerid` according to your DB schema, not `ownerId`.
+    ownerid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    firstName: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    email: {
+    contactinfo: {  // I changed 'email' to 'contactinfo' to match your DB schema.
         type: DataTypes.STRING,
         unique: true,
-        allowNull: false,
-    },
-    password: {
-        type: DataTypes.STRING,
         allowNull: false,
     },
 }, {
     sequelize,
     modelName: 'Owner',
-    tableName: 'owners',
+    tableName: 'owners', // Make sure the table name is in lowercase to match the DB schema.
     timestamps: false,
     hooks: {
         beforeCreate: async (owner) => {
-            const salt = await bcrypt.genSalt(10);
-            owner.password = await bcrypt.hash(owner.password, salt);
+            if (owner.password) { // Make sure 'password' field exists if you're going to hash it
+                const salt = await bcrypt.genSalt(10);
+                owner.password = await bcrypt.hash(owner.password, salt);
+            }
         },
         beforeUpdate: async (owner) => {
             if (owner.changed('password')) {

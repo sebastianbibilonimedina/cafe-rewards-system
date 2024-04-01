@@ -4,16 +4,16 @@ const { sequelize } = global;
 class Reward extends Model {}
 
 Reward.init({
-    rewardId: {
+    rewardid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    shopId: {
+    shopid: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    pointsRequired: {
+    pointsrequired: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -21,7 +21,7 @@ Reward.init({
         type: DataTypes.TEXT,
         allowNull: false,
     },
-    validityId: {
+    validityid: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -34,7 +34,7 @@ Reward.init({
 
 Reward.associate = function(models) {
     this.belongsTo(models.Coffeeshops, {
-        foreignKey: 'shopId',
+        foreignKey: 'shopid',
     });
 };
 module.exports = Reward;

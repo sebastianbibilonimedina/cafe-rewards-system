@@ -4,7 +4,7 @@ const { sequelize } = global;
 class Menu extends Model {}
 
 Menu.init({
-    menuId: {
+    menuid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -13,15 +13,15 @@ Menu.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    itemName: {
+    itemname: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    price: {
+    itemprice: {
         type: DataTypes.DECIMAL(10,2), // Use decimal type for precise calculation
         allowNull: false
     },
-    description: {
+    itemdescription: {
         type: DataTypes.STRING,
         allowNull: true,
     },

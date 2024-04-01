@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const { sequelize } = global;
 
-class CoffeeShops extends Model {}
+class Coffeeshops extends Model {}
 
-CoffeeShops.init({
-    shopid: {
+Coffeeshops.init({
+    shopId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -27,12 +27,12 @@ CoffeeShops.init({
     },
 }, {
     sequelize,
-    modelName: 'CoffeeShops',
-    tableName: 'coffeeshops',
+    modelName: 'Coffeeshops',
+    tableName: 'Coffeeshops',
     timestamps: false, // set this to true if you have createdAt and updatedAt fields
 });
 
-CoffeeShops.associate = function(models) {
+Coffeeshops.associate = function(models) {
     this.hasMany(models.Menus, {
         foreignKey: 'shopid',
     });
@@ -54,4 +54,4 @@ CoffeeShops.associate = function(models) {
     });
 };
 
-module.exports = CoffeeShops;
+module.exports = Coffeeshops;

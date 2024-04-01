@@ -4,24 +4,24 @@ const { sequelize } = global;
 class Transaction extends Model {}
 
 Transaction.init({
-    transactionId: {
+    transactionid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    userId: {
+    userid: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    shopId: {
+    shopid: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    purchaseAmount: {
+    purchaseamount: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
     },
-    pointsEarned: {
+    pointsearned: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -37,12 +37,12 @@ Transaction.init({
 });
 
 Transaction.associate = function(models) {
-    this.belongsTo(models.User, {
-        foreignKey: 'userId',
+    this.belongsTo(models.Users, {
+        foreignKey: 'userid',
     });
 
     this.belongsTo(models.Coffeeshops, {
-        foreignKey: 'shopId',
+        foreignKey: 'shopid',
     });
 };
 

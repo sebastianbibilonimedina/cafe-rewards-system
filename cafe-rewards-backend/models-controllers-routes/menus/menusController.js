@@ -36,7 +36,7 @@ class MenuController {
     // update a menu item
     async update(req, res) {
         try {
-            await Menu.update(req.body, { where: { menuId: req.params.id } });
+            await Menu.update(req.body, { where: { menuid: req.params.id } });
             res.send('Menu item updated');
         } catch (err) {
             res.status(500).send(err.message);
@@ -46,7 +46,7 @@ class MenuController {
     // delete a menu item
     async delete(req, res) {
         try {
-            await Menu.destroy({ where: { menuId: req.params.id } });
+            await Menu.destroy({ where: { menuid: req.params.id } });
             res.send('Menu item deleted');
         } catch (err) {
             res.status(500).send(err.message);

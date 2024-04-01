@@ -4,16 +4,16 @@ const { sequelize } = global;
 class Order extends Model {}
 
 Order.init({
-    orderId: {
+    orderid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    menuId: {
+    userid: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    customerId: {
+    shopid: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -35,11 +35,11 @@ Order.init({
 
 Order.associate = function(models) {
     this.belongsTo(models.Menus, {
-        foreignKey: 'menuId',
+        foreignKey: 'menuid',
     });
 
     this.belongsTo(models.Users, {
-        foreignKey: 'customerId',
+        foreignKey: 'customerid',
     });
 };
 

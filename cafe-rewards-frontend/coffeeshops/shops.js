@@ -1,31 +1,40 @@
-// Top of your .js file
-window.initMap = initMap;
-
-const DEFAULT_MAP_CENTER = {lat: 18.2208, lng: -66.5901};
-const mapOptions = {
-    zoom: 8,
-    center: DEFAULT_MAP_CENTER
-};
-
 function initMap() {
     const map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    createMarker(map, {lat: 18.2013, lng: -67.1397});
-    // Repeat for other locations if necessary
+
+    // Fetch shop data from your backend API
+    fetch('http://localhost:3000/api/coffeeshops')
+        .then(response => response.json())
+        .then(shopsData => {
+            // Assuming shopsData is an array of shop objects
+            shopsData.forEach(shop => {
+                // Use the location to split the string into latitude and longitude
+                const [lat, lng] = shop.location.split(', '); // Make sure this matches how your location data is formatted
+
+                // Create a marker for each shop
+                createMarker(map, { lat: parseFloat(lat), lng: parseFloat(lng) });
+
+                // Add shop to the list
+                const shopList = document.querySelector('.shop-list');
+                const shopDiv = document.createElement('div');
+                shopDiv.classList.add('shop-item');
+                shopDiv.innerHTML = `
+                    <h3>${shop.name}</h3>
+                    <p>${shop.location}</p>
+                    <p>${shop.description}</p>
+                    <button class="order-button">Order Here</button>
+                `;
+                shopList.appendChild(shopDiv);
+
+                // Add event listener for the 'Order Here' button
+                shopDiv.querySelector('.order-button').addEventListener('click', () => orderHere(shop.shopid));
+            });
+        })
+        .catch(error => console.error('Error fetching shops:', error));
 }
 
-function createMarker(map, coords) {
-    return new google.maps.Marker({
-        position: coords,
-        map: map,
-        //icon: 'path_to_custom_icon' // Optional: if you have a custom icon
-    });
+function orderHere(shopId) {
+    console.log('Ordering from shop ID:', shopId);
+    // Implementation for ordering from a specific shop
 }
 
-function reinitializeMap() {
-    if (!document.hidden) {
-        initMap();
-    }
-}
-
-document.addEventListener('visibilitychange', reinitializeMap);
-window.initMap = initMap;
+// ... rest of your existing functions

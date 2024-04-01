@@ -34,17 +34,16 @@
 <main class="shops-page">
     <aside class="shop-list">
         <h2>Find a store</h2>
-        <input type="text" placeholder="Search" aria-label="Search for coffee shops">
-        <button>Filter</button>
+        <input type="text" id="shop-search" placeholder="Search" aria-label="Search for coffee shops">
+        <button id="shop-filter">Filter</button>
 
-        <div class="shop-item">
-            <h3>Plaza Sultana, Mayaguez</h3>
-            <p>61 miles away - Open until 10:00 PM</p>
-            <button class="order-button">Order Here</button>
+        <div class="shop-items-container">
+            <!-- Dynamic shop items will be appended here by the JavaScript -->
         </div>
-        <!-- More shop items... -->
     </aside>
-    <section class="map-container" id="map"></section>
+    <section class="map-container" id="map">
+        <!-- The Google Map will be injected here by the JavaScript -->
+    </section>
 </main>
 <footer class="main-footer">
     <div class="footer-content">

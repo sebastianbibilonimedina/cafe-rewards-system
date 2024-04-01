@@ -17,30 +17,37 @@ Order.init({
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    quantity: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+    orderdetails: {
+        type: DataTypes.TEXT,
+        allowNull: false,
     },
-    orderTime: {
+    totalamount: {
+        type: DataTypes.DECIMAL,
+        allowNull: false,
+    },
+    orderstatus: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    estimatedtime: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW,
-    },
+    }
 }, {
     sequelize,
     modelName: 'Order',
     tableName: 'orders',
-    timestamps: false, // set this to true if you have createdAt and updatedAt fields
+    timestamps: false,
 });
 
 Order.associate = function(models) {
-    this.belongsTo(models.Menus, {
-        foreignKey: 'menuid',
+    this.belongsTo(models.Users, {
+        foreignKey: 'userid',
     });
 
-    this.belongsTo(models.Users, {
-        foreignKey: 'customerid',
+    this.belongsTo(models.Coffeeshops, {
+        foreignKey: 'shopid',
     });
-};
+}; // This closing bracket was missing
 
 module.exports = Order;

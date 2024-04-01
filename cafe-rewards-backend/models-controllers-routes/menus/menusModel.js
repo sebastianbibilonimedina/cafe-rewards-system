@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const { sequelize } = global;
 
-class Menu extends Model {}
+class Menus extends Model {}
 
-Menu.init({
+Menus.init({
     menuid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -27,14 +27,14 @@ Menu.init({
     },
 }, {
     sequelize,
-    modelName: 'Menu',
+    modelName: 'Menus',
     tableName: 'menu',
     timestamps: false, // set this to true if you have createdAt and updatedAt fields
 });
 
-Menu.associate = function(models) {
+Menus.associate = function(models) {
     this.belongsTo(models.Coffeeshops, {
         foreignKey: 'shopid',
     });
 };
-module.exports = Menu;
+module.exports = Menus;

@@ -4,7 +4,7 @@ const { sequelize } = global;
 class Coffeeshops extends Model {}
 
 Coffeeshops.init({
-    shopId: {
+    shopid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -28,7 +28,7 @@ Coffeeshops.init({
 }, {
     sequelize,
     modelName: 'Coffeeshops',
-    tableName: 'Coffeeshops',
+    tableName: 'coffeeshops',
     timestamps: false, // set this to true if you have createdAt and updatedAt fields
 });
 

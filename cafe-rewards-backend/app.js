@@ -5,6 +5,14 @@ const db = require('../cafe-rewards-backend/models-controllers-routes/index');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+// CORS middleware
+const cors = require('cors');
+const corsOrigin = process.env.CORS_ORIGIN;
+
 db.sequelize.authenticate()
     .then(() => {
         console.log('Connection has been established successfully.');
@@ -40,6 +48,19 @@ app.use('/api/menus', menusRoutes);
 app.use('/api/digitalwallets', digitalWalletsRoutes);
 app.use('/api/coffeeshops', coffeeShopsRoutes);
 
+// CORS middleware
+app.use(cors({
+    origin: corsOrigin
+}));
+
+// Error handling middleware
+function handleError(err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+}
+
+app.use(handleError);
+
 app.get('/', (req, res) => {
     res.send('Café Rewards PR Backend is running...');
 });
@@ -47,5 +68,8 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+//CORS middleware
+app.use(cors());
 
 module.exports = app;

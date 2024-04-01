@@ -1,1 +1,13 @@
 /cafe-rewards-backend/node_modules/
+
+# Ignore everything in the .idea folder
+.idea/*
+
+# But keep project-level settings:
+!.idea/codeStyles/
+!.idea/inspectionProfiles/
+
+# JetBrains IDE-specific files
+.idea/
+*.iml
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Rewards - Start Earning Points</title>
+    <link rel="stylesheet" href="../css/base/variables.css">
+    <link rel="stylesheet" href="../css/base/fonts.css">
+    <link rel="stylesheet" href="../css/base/global.css">
+    <link rel="stylesheet" href="../css/base/utils.css">
+    <link rel="stylesheet" href="../css/pages/account/signup.css">
+</head>
+<body>
+<header class="main-header">
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li class="logo">CAFÉ REWARDS</li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Signup Form -->
+<form action="/signup" method="POST">
+    <label for="name">Full Name:</label><br>
+    <input type="text" id="name" name="name" required><br>
+    <label for="username">Email:</label><br>
+    <input type="email" id="username" name="username" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br>
+    <label for="confirm-password">Confirm Password:</label><br>
+    <input type="password" id="confirm-password" name="confirm-password" required><br>
+    <div class="agreement-container">
+        <input type="checkbox" id="agreement" name="agreement" required>
+        <label for="agreement">I agree to the Terms and Conditions.</label><br>
+    </div>
+    <input type="submit" value="Sign Up">
+    <p>Already a member? <a href="login.html">Log In</a></p>
+</form>

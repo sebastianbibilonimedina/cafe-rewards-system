@@ -1,0 +1,100 @@
+
+.dashboard {
+    background: #fff;
+    max-width: 360px;
+    margin: 20px auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Assistant', sans-serif;
+}
+
+.card-header {
+    background: linear-gradient(to right, #bdc1c6, #f8f9fa);
+    padding: 10px;
+    color: #3c4043;
+    position: relative;
+}
+
+.user-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.user-icon {
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.card-details {
+    text-align: center;
+    padding: 20px 0;
+    color: #5f6368;
+}
+
+.card-details span {
+    display: block;
+    margin: 5px 0;
+}
+
+.points-info {
+    padding: 15px;
+    text-align: center;
+    background: #f8f9fa;
+}
+
+.points-bar {
+    background: #e9ecef;
+    border-radius: 20px;
+    padding: 3px;
+    position: relative;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(to right, #9aa0a6, #dadce0);
+    transition: width 0.4s ease;
+}
+
+.learn-more {
+    background: #5f6368;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.navigation {
+    background: #202124;
+    display: flex;
+}
+
+.nav-link {
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    flex-grow: 1;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    background: #3c4043;
+}
+
+@media (max-width: 400px) {
+    .dashboard {
+        width: 95%;
+        margin: 10px auto;
+    }
+}

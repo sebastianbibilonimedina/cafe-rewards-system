@@ -35,3 +35,14 @@
     flex-grow: 1; /* Take remaining space */
     /* Map will fill this container */
 }
+/* CSS file: e.g., shops.css */
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Optional: background color for the map container */
+    color: #333; /* Optional: text color */
+    font-size: 20px; /* Optional: adjust font size as needed */
+    border: 1px solid #ccc; /* Optional: adds a border to the map container */
+    margin: 20px 0; /* Optional: adds some margin around the map container */
+}

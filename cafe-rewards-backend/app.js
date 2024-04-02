@@ -1,17 +1,17 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const db = require('../cafe-rewards-backend/models-controllers-routes/index');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const dotenv = require('dotenv');
+// Apply CORS middleware with configuration
+app.use(cors({
+    origin: process.env.CORS_ORIGIN // make sure this is set in your .env.local file
+}));
 
-dotenv.config();
-
-// CORS middleware
-const cors = require('cors');
-const corsOrigin = process.env.CORS_ORIGIN;
+app.use(express.json());
 
 db.sequelize.authenticate()
     .then(() => {
@@ -32,8 +32,6 @@ const menusRoutes = require('../cafe-rewards-backend/models-controllers-routes/m
 const digitalWalletsRoutes = require('../cafe-rewards-backend/models-controllers-routes/digitalwallets/digitalwalletsRouter');
 const coffeeShopsRoutes = require('../cafe-rewards-backend/models-controllers-routes/coffeeshops/coffeeshopsRouter');
 
-app.use(express.json());
-
 app.use((req, res, next) => {
     console.log(`A ${req.method} request received at ${new Date().toLocaleTimeString()} on ${req.url}`);
     next();
@@ -48,28 +46,14 @@ app.use('/api/menus', menusRoutes);
 app.use('/api/digitalwallets', digitalWalletsRoutes);
 app.use('/api/coffeeshops', coffeeShopsRoutes);
 
-// CORS middleware
-app.use(cors({
-    origin: corsOrigin
-}));
-
-// Error handling middleware
-function handleError(err, req, res, next) {
+// Error handling middleware should be last piece of middleware used
+app.use(function (err, req, res, next) {
     console.error(err.stack);
     res.status(500).send('Something broke!');
-}
-
-app.use(handleError);
-
-app.get('/', (req, res) => {
-    res.send('Café Rewards PR Backend is running...');
 });
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
-//CORS middleware
-app.use(cors());
 
 module.exports = app;

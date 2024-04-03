@@ -20,7 +20,7 @@
 </header>
 
 <!-- Signup Form -->
-<form action="/signup" method="POST">
+<form id="signup-form">
     <label for="name">Full Name:</label><br>
     <input type="text" id="name" name="name" required><br>
     <label for="username">Email:</label><br>
@@ -36,3 +36,11 @@
     <input type="submit" value="Sign Up">
     <p>Already a member? <a href="login.html">Log In</a></p>
 </form>
+
+<!-- Error and Success Messages -->
+<div id="error-message" class="error-message"></div>
+<div id="success-message" class="success-message"></div>
+
+<script type="module" src="../js/signup.js"></script>
+</body>
+</html>

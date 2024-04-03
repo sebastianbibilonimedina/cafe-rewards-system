@@ -1,8 +1,9 @@
-const User = require('../users/usersModel');
+const bcrypt = require('bcrypt');
+const User = require('../users/usersModel'); // Ensure the path is correct
+const saltRounds = 10;
 
 class UserController {
 
-    // fetch all users
     async getAll(req, res) {
         try {
             const users = await User.findAll();
@@ -12,38 +13,52 @@ class UserController {
         }
     }
 
-    // fetch a user by its id
     async getOne(req, res) {
         try {
             const user = await User.findByPk(req.params.id);
-            if (user) return res.json(user);
-            else return res.status(404).send('User not found');
+            if (user) {
+                res.json(user);
+            } else {
+                res.status(404).send('User not found');
+            }
         } catch (err) {
             res.status(500).send(err.message);
         }
     }
 
-    // create a new user
     async create(req, res) {
         try {
-            const user = await User.create(req.body);
-            res.status(201).json(user);
+            const { name, email, password, pointbalance } = req.body;
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+            const newUser = {
+                name,
+                email,
+                password: hashedPassword,
+                pointbalance,
+            };
+
+            const user = await User.create(newUser);
+            res.status(201).json({ message: "User created successfully", userId: user.userid });
         } catch (err) {
+            console.error(err);
             res.status(500).send(err.message);
         }
     }
 
-    // update a user
     async update(req, res) {
         try {
-            await User.update(req.body, { where: { userid: req.params.id } });
+            const updates = req.body;
+            if (updates.password) {
+                updates.password = await bcrypt.hash(updates.password, saltRounds);
+            }
+            await User.update(updates, { where: { userid: req.params.id } });
             res.send('User updated');
         } catch (err) {
             res.status(500).send(err.message);
         }
     }
 
-    // delete a user
     async delete(req, res) {
         try {
             await User.destroy({ where: { userid: req.params.id } });

@@ -3,14 +3,18 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const db = require('./server');
-const app = express();
-const port = process.env.PORT;
 
-app.use(express.static(path.join(__dirname, 'client')));
+const app = express();
+const port = process.env.PORT || 3000; // Added a fallback value for port
+
+// Correctly define the path to your static files
+const clientHtmlPath = path.join(__dirname, 'client');
+
+app.use(express.static(clientHtmlPath));
 
 function configureMiddleware() {
     app.use(cors({
-        origin: process.env.CORS_ORIGIN // make sure this is set in your .env.local file
+        origin: process.env.CORS_ORIGIN // Make sure this is set in your .env file, not .env.local for production
     }));
     app.use(express.json());
 }
@@ -35,16 +39,15 @@ function loadRoutes() {
         app.use(`/api/${route}`, require(routePath));
     });
 
-    // Error handling middleware should be last piece of middleware used
+    // Error handling middleware should be the last piece of middleware used
     app.use(function (err, req, res, next) {
         console.error(err.stack);
         res.status(500).send('Something broke!');
     });
 }
 
-// Serve static files from the 'client/html' directory
+// Serve static files and index.html
 app.use(express.static(clientHtmlPath));
-// When a GET request is made to the server, serve the 'index.html' file
 app.get('*', (req, res) => {
     res.sendFile(path.join(clientHtmlPath, 'index.html'));
 });
@@ -53,7 +56,6 @@ app.use((req, res, next) => {
     console.log(`A ${req.method} request received at ${new Date().toLocaleTimeString()} on ${req.url}`);
     next();
 });
-
 
 connectDatabase();
 configureMiddleware();

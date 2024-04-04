@@ -6,7 +6,7 @@ const db = require('./server');
 const app = express();
 const port = process.env.PORT;
 
-const clientHtmlPath = path.join(__dirname, 'client', 'html');
+app.use(express.static(path.join(__dirname, 'client')));
 
 function configureMiddleware() {
     app.use(cors({

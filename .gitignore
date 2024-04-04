@@ -1,6 +1,6 @@
 # Ignore node modules
 /node_modules/
-/cafe-rewards-backend/node_modules/
+/server/node_modules/
 
 # Ignore everything in the .idea folder
 .idea/*

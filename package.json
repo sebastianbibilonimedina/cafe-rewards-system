@@ -20,6 +20,10 @@
     "supertest": "^6.3.4",
     "parcel-bundler": "^1.12.5"
   },
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
   "scripts": {
     "start": "node app.js",
     "heroku-postbuild": "cd client && npm install && npm run build"

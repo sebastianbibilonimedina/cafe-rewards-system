@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const db = require('../cafe-rewards-backend/models-controllers-routes/index');
+const db = require('./cafe-rewards-backend/models-controllers-routes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,14 +23,14 @@ db.sequelize.authenticate()
         console.error('Unable to connect to the database:', err);
     });
 
-const usersRoutes = require('../cafe-rewards-backend/models-controllers-routes/users/usersRouter');
-const rewardsRoutes = require('../cafe-rewards-backend/models-controllers-routes/rewards/rewardsRouter');
-const transactionsRoutes = require('../cafe-rewards-backend/models-controllers-routes/transactions/transactionsRouter');
-const ordersRoutes = require('../cafe-rewards-backend/models-controllers-routes/orders/ordersRouter');
-const ownersRoutes = require('../cafe-rewards-backend/models-controllers-routes/owners/ownersRouter');
-const menusRoutes = require('../cafe-rewards-backend/models-controllers-routes/menus/menusRouter');
-const digitalWalletsRoutes = require('../cafe-rewards-backend/models-controllers-routes/digitalwallets/digitalwalletsRouter');
-const coffeeShopsRoutes = require('../cafe-rewards-backend/models-controllers-routes/coffeeshops/coffeeshopsRouter');
+const usersRoutes = require('./cafe-rewards-backend/models-controllers-routes/users/usersRouter');
+const rewardsRoutes = require('./cafe-rewards-backend/models-controllers-routes/rewards/rewardsRouter');
+const transactionsRoutes = require('./cafe-rewards-backend/models-controllers-routes/transactions/transactionsRouter');
+const ordersRoutes = require('./cafe-rewards-backend/models-controllers-routes/orders/ordersRouter');
+const ownersRoutes = require('./cafe-rewards-backend/models-controllers-routes/owners/ownersRouter');
+const menusRoutes = require('./cafe-rewards-backend/models-controllers-routes/menus/menusRouter');
+const digitalWalletsRoutes = require('./cafe-rewards-backend/models-controllers-routes/digitalwallets/digitalwalletsRouter');
+const coffeeShopsRoutes = require('./cafe-rewards-backend/models-controllers-routes/coffeeshops/coffeeshopsRouter');
 
 app.use((req, res, next) => {
     console.log(`A ${req.method} request received at ${new Date().toLocaleTimeString()} on ${req.url}`);

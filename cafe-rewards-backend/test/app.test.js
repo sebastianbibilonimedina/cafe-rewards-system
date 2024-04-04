@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const request = require('supertest');
-const app = require('../app'); // make sure to point to your app file.
+const app = require('../../app'); // make sure to point to your app file.
 
 describe('Transactions API tests', () => {
 

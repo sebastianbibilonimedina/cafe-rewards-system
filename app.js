@@ -1,10 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const db = require('./cafe-rewards-backend/models-controllers-routes');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Added static middleware to serve frontend static files
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Apply CORS middleware with configuration
 app.use(cors({
@@ -45,6 +49,10 @@ app.use('/api/owners', ownersRoutes);
 app.use('/api/menus', menusRoutes);
 app.use('/api/digitalwallets', digitalWalletsRoutes);
 app.use('/api/coffeeshops', coffeeShopsRoutes);
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 // Error handling middleware should be last piece of middleware used
 app.use(function (err, req, res, next) {

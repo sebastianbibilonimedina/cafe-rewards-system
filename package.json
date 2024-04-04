@@ -21,6 +21,7 @@
     "parcel-bundler": "^1.12.5"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   }
 }

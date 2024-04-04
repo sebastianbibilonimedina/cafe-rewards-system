@@ -23,14 +23,14 @@ global.sequelize = new Sequelize(process.env.DATABASE_URL, {
 });
 
 // Here you need to require each model
-const Owners = require('./owners/ownersModel');
-const Users = require('./users/usersModel');
-const Coffeeshops = require('./coffeeshops/coffeeshopsModel');
-const DigitalWallets = require('./digitalwallets/digitalwalletsModel');
-const Menus = require('./menus/menusModel');
-const Rewards = require('./rewards/rewardsModel');
-const Orders = require('./orders/ordersModel');
-const Transactions = require('./transactions/transactionsModel');
+const Owners = require('./models-controllers-routes/owners/ownersModel');
+const Users = require('./models-controllers-routes/users/usersModel');
+const Coffeeshops = require('./models-controllers-routes/coffeeshops/coffeeshopsModel');
+const DigitalWallets = require('./models-controllers-routes/digitalwallets/digitalwalletsModel');
+const Menus = require('./models-controllers-routes/menus/menusModel');
+const Rewards = require('./models-controllers-routes/rewards/rewardsModel');
+const Orders = require('./models-controllers-routes/orders/ordersModel');
+const Transactions = require('./models-controllers-routes/transactions/transactionsModel');
 
 // Include the models in the db object
 db.Owners = Owners;

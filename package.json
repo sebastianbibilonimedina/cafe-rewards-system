@@ -17,6 +17,7 @@
     "dotenv-cli": "^7.4.1",
     "mocha": "^10.4.0",
     "parcel-bundler": "^1.12.5",
+    "sequelize-cli": "^6.6.2",
     "supertest": "^6.3.4"
   },
   "engines": {
@@ -25,6 +26,8 @@
   },
   "scripts": {
     "start": "node app.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "migrate": "sequelize db:migrate",
+    "seed": "sequelize db:seed:all"
   }
 }

@@ -14,7 +14,12 @@ global.sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proce
 global.sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     protocol: 'postgres',
-    logging: false
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false,
+        },
+    },
 });
 
 // Here you need to require each model
